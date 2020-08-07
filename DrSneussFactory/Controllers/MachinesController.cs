@@ -58,9 +58,8 @@ namespace DrSneussFactory.Controllers
 
     public ActionResult Edit(int id)
     {
-      var thisItem = _db.Items.FirstOrDefault(items => items.ItemId == id);
-      ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
-      return View(thisItem);
+      var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
+      return View(thisMachine);
     }
 
     [HttpPost]
@@ -100,9 +99,9 @@ namespace DrSneussFactory.Controllers
       {
         EngineerMachine thisEngineerMachine = _db.EngineerMachine.FirstOrDefault(join => join.Engineer.EngineerId == EngineerId && join.Machine.MachineId == MachineId);
         _db.EngineerMachine.Remove(thisEngineerMachine);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
       }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
     [HttpPost]

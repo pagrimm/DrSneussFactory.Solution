@@ -3,6 +3,7 @@ using DrSneussFactory.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DrSneussFactory.Controllers
 {
@@ -15,7 +16,7 @@ namespace DrSneussFactory.Controllers
       _db = db;
     }
 
-    public ActionResult Index(string seachQuery)
+    public ActionResult Index(string searchQuery)
     {
       IQueryable<Engineer> engineerQuery = _db.Engineers;
       ViewBag.SearchFlag = 0;
@@ -77,6 +78,7 @@ namespace DrSneussFactory.Controllers
     {
       Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+      return RedirectToAction("Index");
     }
 
     [HttpPost]
@@ -97,9 +99,9 @@ namespace DrSneussFactory.Controllers
       {
         EngineerMachine thisEngineerMachine = _db.EngineerMachine.FirstOrDefault(join => join.Engineer.EngineerId == EngineerId && join.Machine.MachineId == MachineId);
         _db.EngineerMachine.Remove(thisEngineerMachine);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
       }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

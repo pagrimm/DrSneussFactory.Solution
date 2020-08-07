@@ -8,7 +8,7 @@
 @foreach (var join in Model.Engineers)
 {
   <div>
-    @using (Html.BeginForm("RemoveEngineer", "Machines", new {EngineerId = Model.Engineer.EngineerId, MachineId = Model.Machine.MachineId }))
+    @using (Html.BeginForm("RemoveEngineer", "Machines", new {EngineerId = join.Engineer.EngineerId, MachineId = join.Machine.MachineId }))
     {
       @Html.ActionLink($"{join.Engineer.Name}", "Details", "Engineers", new { id = join.Engineer.EngineerId })
       <button type="submit" class="btn btn-danger mr-3">Remove</button>
