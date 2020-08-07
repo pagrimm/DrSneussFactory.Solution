@@ -15,10 +15,15 @@ namespace DrSneussFactory.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public ActionResult Index(string seachQuery)
     {
-      List<Engineer> model = _db.Engineers.ToList();
-      return View(model);
+      IQueryable<Engineer> engineerQuery = _db.Engineers;
+      if (!string.IsNullOrEmpty(searchQuery))
+      {
+        engineerQuery = engineerQuery.Where(engineers => engineers.Name.ToLower().Contains(searchQuery.ToLower()));
+      }
+      IEnumerable<Engineer> engineerList = engineerQuery.ToList().OrderBy(engineers => engineers.Name);
+      return View(engineerList);
     }
 
     public ActionResult Create()
