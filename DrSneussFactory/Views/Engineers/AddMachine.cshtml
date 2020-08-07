@@ -15,9 +15,9 @@
         @Html.HiddenFor(model => model.EngineerId)
 
         @Html.Label("Select Machine")
-        @Html.DropDownList("MachineId")
+        @Html.DropDownList("MachineId", (IEnumerable<SelectListItem>)ViewBag.MachineId, new { @class = "form-control" })
 
-        <input type="submit" value="Save" />
+        <input type="submit" value="Save" class="btn btn-primary mt-3"/>
       }
     </div>
   </div>
