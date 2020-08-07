@@ -22,9 +22,11 @@ User Stories
 * Install MySQL and set the system path, more information on how to do that can be found here: https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql
 * Clone the GitHub repository by running `git clone https://github.com/pagrimm/DrSneussFactory.Solution.git` in the terminal
 * Navigate to the newly created `DrSneussFactory.Solution` folder
-* Navigate to the `DrSneussFactory` subfolder and run `dotnet restore`
-* Run `dotnet ef database update` to create the database.
-* Run `dotnet build` to build the app and `dotnet run` to run it
+* Navigate to the `DrSneussFactory` subfolder
+* Run `dotnet restore` to get application dependencies
+* Run `dotnet build` to build the application
+* Run `dotnet ef database update` to create the application database
+* Run `dotnet run` to run the application
 * The web app will now be available on `http://localhost:5000/` in your browser
 
 ## Technologies Used
