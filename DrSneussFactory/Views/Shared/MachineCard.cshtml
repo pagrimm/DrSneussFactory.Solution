@@ -22,5 +22,9 @@
       <h5 class="card-title">Engineers qualified to repair this machine:</h5>
       @Html.Partial("EngineerList", Model)
     </div>
+    @using (Html.BeginForm("AddEngineer", "Machines", new {id = Model.MachineId}, FormMethod.Get))
+    {
+      <button type="submit" class="btn btn-success mr-3">Add Licensed Engineer</button>
+    }
   </div>
 </section>

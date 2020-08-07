@@ -19,9 +19,11 @@ namespace DrSneussFactory.Controllers
     public ActionResult Index(string searchQuery)
     {
       IQueryable<Machine> machineQuery = _db.Machines;
+      ViewBag.SearchFlag = 0;
       if (!string.IsNullOrEmpty(searchQuery))
       {
         machineQuery = machineQuery.Where(machines => machines.Name.ToLower().Contains(searchQuery.ToLower()));
+        ViewBag.SearchFlag = 1;
       }
       IEnumerable<Machine> machineList = machineQuery.ToList().OrderBy(machines => machines.Name);
       return View(machineList);

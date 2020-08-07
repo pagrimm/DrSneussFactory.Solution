@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+<section class="card mb-3">
+    <div class="card-header">
+      <div class="cardListName">Engineer and Machine Management</div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Welcome to Dr. Sneuss' Factory Engineer and Machine Management Portal</h5>
+      <p>Select an option from the navigation bar to browse the site or add an engineer or machine to get started.</p>
+      <form action="/engineers/create" method="get" class="home-form">
+        <button type="submit" class="btn btn-primary">Add New Engineer</button>
+      </form>
+      <form action="/machines/create" method="get" class="home-form">
+        <button type="submit" class="btn btn-primary">Add New Machine</button>
+      </form>
+    </div>
+  </section>  

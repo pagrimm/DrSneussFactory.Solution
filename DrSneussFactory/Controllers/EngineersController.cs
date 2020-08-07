@@ -18,9 +18,11 @@ namespace DrSneussFactory.Controllers
     public ActionResult Index(string seachQuery)
     {
       IQueryable<Engineer> engineerQuery = _db.Engineers;
+      ViewBag.SearchFlag = 0;
       if (!string.IsNullOrEmpty(searchQuery))
       {
         engineerQuery = engineerQuery.Where(engineers => engineers.Name.ToLower().Contains(searchQuery.ToLower()));
+        ViewBag.SearchFlag = 1;
       }
       IEnumerable<Engineer> engineerList = engineerQuery.ToList().OrderBy(engineers => engineers.Name);
       return View(engineerList);
