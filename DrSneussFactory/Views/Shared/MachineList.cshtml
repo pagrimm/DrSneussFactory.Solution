@@ -1,0 +1,16 @@
+@using DrSneussFactory.Models;
+@model DrSneussFactory.Models.Engineer;
+
+@if (Model.Machines.Count == 0)
+{
+  <p>This Engineer is not licensed to repair any machines.</p>
+}
+@foreach (var join in Model.Machines)
+{
+  <div>
+    <form action="/Engineers/RemoveMachine" method="post">
+      @Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })
+      <button type="submit" class="btn btn-danger mr-3">Remove</button>
+    </form>
+  </div>
+}

@@ -81,7 +81,7 @@ namespace DrSneussFactory.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddCategory(Machine machine, int EngineerId)
+    public ActionResult AddEngineer(Machine machine, int EngineerId)
     {
       if (EngineerId != 0)
       {
