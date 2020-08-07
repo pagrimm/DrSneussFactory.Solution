@@ -93,14 +93,20 @@ namespace DrSneussFactory.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult Delete(int id)
+    [HttpPost]
+    public ActionResult RemoveEngineer (int EngineerId, int MachineId)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
-      return View(thisMachine);
+      if (MachineId != 0 && EngineerId != 0)
+      {
+        EngineerMachine thisEngineerMachine = _db.EngineerMachine.FirstOrDefault(join => join.Engineer.EngineerId == EngineerId && join.Machine.MachineId == MachineId);
+        _db.EngineerMachine.Remove(thisEngineerMachine);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
-    [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id)
+    [HttpPost]
+    public ActionResult Delete(int id)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
       _db.Machines.Remove(thisMachine);

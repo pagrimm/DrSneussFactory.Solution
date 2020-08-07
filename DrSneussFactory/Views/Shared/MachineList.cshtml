@@ -8,9 +8,10 @@
 @foreach (var join in Model.Machines)
 {
   <div>
-    <form action="/Engineers/RemoveMachine" method="post">
+    @using (Html.BeginForm("RemoveMachine", "Engineers", new {EngineerId = Model.Engineer.EngineerId, MachineId = Model.Machine.MachineId }))
+    {
       @Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })
       <button type="submit" class="btn btn-danger mr-3">Remove</button>
-    </form>
+    }
   </div>
 }
