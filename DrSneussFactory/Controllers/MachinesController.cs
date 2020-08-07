@@ -18,7 +18,7 @@ namespace DrSneussFactory.Controllers
 
     public ActionResult Index(string searchQuery)
     {
-      IQueryable<Machine> machineQuery = _db.Machines;
+      IQueryable<Machine> machineQuery = _db.Machines.Include(machine => machine.Engineers).ThenInclude(join => join.Engineer);
       ViewBag.SearchFlag = 0;
       if (!string.IsNullOrEmpty(searchQuery))
       {

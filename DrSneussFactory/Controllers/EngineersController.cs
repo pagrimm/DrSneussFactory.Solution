@@ -18,7 +18,7 @@ namespace DrSneussFactory.Controllers
 
     public ActionResult Index(string searchQuery)
     {
-      IQueryable<Engineer> engineerQuery = _db.Engineers;
+      IQueryable<Engineer> engineerQuery = _db.Engineers.Include(engineer => engineer.Machines).ThenInclude(join => join.Machine);
       ViewBag.SearchFlag = 0;
       if (!string.IsNullOrEmpty(searchQuery))
       {
@@ -78,7 +78,7 @@ namespace DrSneussFactory.Controllers
     {
       Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
-      return RedirectToAction("Index");
+      return View(thisEngineer);
     }
 
     [HttpPost]
