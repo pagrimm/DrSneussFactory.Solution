@@ -84,7 +84,7 @@ namespace DrSneussFactory.Controllers
     [HttpPost]
     public ActionResult AddMachine (Engineer engineer, int MachineId)
     {
-      if (MachineId != 0)
+      if (MachineId != 0 && !(_db.EngineerMachine.Any(join => join.Engineer.EngineerId == engineer.EngineerId && join.Machine.MachineId == MachineId)))
       {
         _db.EngineerMachine.Add(new EngineerMachine() { MachineId = MachineId, EngineerId = engineer.EngineerId });
       }
