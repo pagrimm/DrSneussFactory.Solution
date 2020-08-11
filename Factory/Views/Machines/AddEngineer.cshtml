@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<section class="card mb-3">
+  <div class="card-header">
+    <div class="cardListName">Add Licensed Engineer for this Machine: @Html.DisplayFor(model => model.Name)</div>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+      @using (Html.BeginForm())
+      {
+        @Html.HiddenFor(model => model.MachineId)
+
+        @Html.Label("Select Engineer")
+        @Html.DropDownList("EngineerId", (IEnumerable<SelectListItem>)ViewBag.EngineerId, new { @class = "form-control" })
+
+        <input type="submit" value="Save" class="btn btn-primary mt-3"/>
+      }
+    </div>
+  </div>
+</section>

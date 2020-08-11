@@ -20,9 +20,9 @@ User Stories
 * For Mac users, download MySQL here: https://dev.mysql.com/downloads/file/?id=484914
 * For Windows users, download MySQL here: https://dev.mysql.com/downloads/file/?id=484919
 * Install MySQL and set the system path, more information on how to do that can be found here: https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql
-* Clone the GitHub repository by running `git clone https://github.com/pagrimm/DrSneussFactory.Solution.git` in the terminal
+* Clone the GitHub repository by running `git clone https://github.com/pagrimm/Factory.Solution.git` in the terminal
 * Navigate to the newly created `DrSneussFactory.Solution` folder
-* Navigate to the `DrSneussFactory` subfolder
+* Navigate to the `Factory` subfolder
 * Run `dotnet restore` to get application dependencies
 * Run `dotnet build` to build the application
 * Run `dotnet ef database update` to create the application database

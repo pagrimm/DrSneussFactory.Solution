@@ -1,0 +1,30 @@
+@using Factory.Models;
+@model Factory.Models.Engineer;
+
+<section class="card mb-3">
+  <div class="card-header">
+    <div class="cardListName">Engineer: @Html.ActionLink($"{Model.Name}", "Details", "Engineers", new { id = Model.EngineerId })</div>
+    <div class="cardListButton">
+      @using (Html.BeginForm("Delete", "Engineers", new {id = Model.EngineerId}))
+      {
+        <button type="submit" class="btn btn-danger">Delete Engineer</button>
+      }
+    </div>
+    <div class="cardListButton">
+      @using (Html.BeginForm("Edit", "Engineers", new {id = Model.EngineerId}, FormMethod.Get))
+      {
+        <button type="submit" class="btn btn-warning mr-3">Edit Engineer</button>
+      }
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+      <h5 class="card-title">Machines qualified to repair:</h5>
+      @Html.Partial("MachineList", Model)
+    </div>
+    @using (Html.BeginForm("AddMachine", "Engineers", new {id = Model.EngineerId}, FormMethod.Get))
+    {
+      <button type="submit" class="btn btn-success mr-3">Add Licensed Machine</button>
+    }
+  </div>
+</section>
